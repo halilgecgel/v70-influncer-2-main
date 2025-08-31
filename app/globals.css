@@ -1,0 +1,475 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to black theme with green gradient accents based on kesif Collective branding */
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #111111;
+  --card-foreground: #ffffff;
+  --popover: #000000;
+  --popover-foreground: #ffffff;
+  --primary: #22c55e;
+  --primary-foreground: #000000;
+  --secondary: #16a34a;
+  --secondary-foreground: #ffffff;
+  --muted: #1a1a1a;
+  --muted-foreground: #a3a3a3;
+  --accent: #22c55e;
+  --accent-foreground: #000000;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #333333;
+  --input: #111111;
+  --ring: rgba(34, 197, 94, 0.5);
+  --chart-1: #22c55e;
+  --chart-2: #16a34a;
+  --chart-3: #15803d;
+  --chart-4: #166534;
+  --chart-5: #14532d;
+  --radius: 0.5rem;
+  --sidebar: #000000;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #22c55e;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #16a34a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #333333;
+  --sidebar-ring: rgba(34, 197, 94, 0.5);
+  --font-space-grotesk: "Space Grotesk", system-ui, sans-serif;
+  --font-dm-sans: "DM Sans", system-ui, sans-serif;
+}
+
+.dark {
+  /* Dark theme now matches the black base theme */
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: rgba(17, 17, 17, 0.8);
+  --card-foreground: #ffffff;
+  --popover: rgba(0, 0, 0, 0.95);
+  --popover-foreground: #ffffff;
+  --primary: #22c55e;
+  --primary-foreground: #000000;
+  --secondary: #16a34a;
+  --secondary-foreground: #ffffff;
+  --muted: #1a1a1a;
+  --muted-foreground: #a3a3a3;
+  --accent: #22c55e;
+  --accent-foreground: #000000;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #333333;
+  --input: #111111;
+  --ring: rgba(34, 197, 94, 0.5);
+  --chart-1: #22c55e;
+  --chart-2: #16a34a;
+  --chart-3: #15803d;
+  --chart-4: #166534;
+  --chart-5: #14532d;
+  --sidebar: rgba(0, 0, 0, 0.8);
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #22c55e;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #16a34a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #333333;
+  --sidebar-ring: rgba(34, 197, 94, 0.5);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Updated to Space Grotesk and DM Sans fonts for modern influencer marketing aesthetic */
+  --font-heading: var(--font-space-grotesk);
+  --font-body: var(--font-dm-sans);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    /* Removed custom cursor to use default system cursor */
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    /* Adding kesif collective gradient background effect */
+    background: radial-gradient(
+      ellipse at right,
+      rgba(34, 197, 94, 0.15) 0%,
+      rgba(22, 163, 74, 0.08) 35%,
+      rgba(0, 0, 0, 1) 70%
+    );
+    background-attachment: fixed;
+    /* Adding CSS variables for cursor glow positioning */
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+  }
+
+  /* Basic animations for UI interactions only */
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-out-left {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.5s ease-out;
+  }
+
+  .animate-slide-out-left {
+    animation: slide-out-left 0.5s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+
+  /* Enhanced animations for influencer detail page */
+  @keyframes slide-in-from-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fade-in-delayed {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in-bottom {
+    animation: slide-in-from-bottom 0.8s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.6s ease-out;
+  }
+
+  .animate-fade-in-delayed {
+    animation: fade-in-delayed 1s ease-out 0.3s both;
+  }
+
+  /* Staggered animation delays */
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
+  .animate-delay-400 { animation-delay: 0.4s; }
+  .animate-delay-500 { animation-delay: 0.5s; }
+
+  /* Glassmorphism effects */
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass-effect {
+    background: rgba(15, 15, 15, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Gradient text effect */
+  .gradient-text {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark .gradient-text {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Kesif Collective gradient background effect */
+  .kesif-gradient {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.05) 100%);
+  }
+
+  /* Enhanced kesif gradient with radial effect matching the provided image */
+  .kesif-radial-gradient {
+    background: radial-gradient(
+      ellipse at right,
+      rgba(34, 197, 94, 0.2) 0%,
+      rgba(22, 163, 74, 0.1) 40%,
+      transparent 70%
+    );
+  }
+
+  .kesif-gradient-border {
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  /* Mouse trail effect */
+  .mouse-trail {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    /* Reduced particle size and enhanced glow for better performance */
+    background: radial-gradient(circle, rgba(34, 197, 94, 1) 0%, rgba(34, 197, 94, 0.8) 40%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    animation: high-fps-particle-fade 0.4s ease-out forwards;
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.9), 0 0 12px rgba(34, 197, 94, 0.5);
+  }
+
+  /* Added waterfall effect for stationary mouse particles */
+  .mouse-trail-static {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 1) 0%, rgba(34, 197, 94, 0.9) 30%, transparent 60%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+    animation: waterfall-drop 1.2s ease-in forwards;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 1), 0 0 16px rgba(34, 197, 94, 0.7);
+  }
+
+  /* Waterfall animation that drops particles downward */
+  @keyframes waterfall-drop {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1.2);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 1), 0 0 20px rgba(34, 197, 94, 0.8);
+    }
+    20% {
+      opacity: 0.9;
+      transform: translateY(20px) scale(1.1);
+    }
+    40% {
+      opacity: 0.8;
+      transform: translateY(50px) scale(1);
+    }
+    60% {
+      opacity: 0.6;
+      transform: translateY(90px) scale(0.9);
+    }
+    80% {
+      opacity: 0.3;
+      transform: translateY(140px) scale(0.7);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(200px) scale(0.3);
+      box-shadow: 0 0 2px rgba(34, 197, 94, 0.1);
+    }
+  }
+
+  /* High FPS particle animation */
+  @keyframes high-fps-particle-fade {
+    0% {
+      opacity: 1;
+      transform: scale(1.2);
+      box-shadow: 0 0 8px rgba(34, 197, 94, 1), 0 0 16px rgba(34, 197, 94, 0.6);
+    }
+    25% {
+      opacity: 0.9;
+      transform: scale(1.4);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+    75% {
+      opacity: 0.4;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.2);
+      box-shadow: 0 0 2px rgba(34, 197, 94, 0.1);
+    }
+  }
+
+  /* Enhanced cursor glow effect that follows mouse */
+  body::before {
+    content: "";
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 50%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: screen;
+    transition: all 0.1s ease;
+    left: var(--mouse-x);
+    top: var(--mouse-y);
+    animation: cursor-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes cursor-pulse {
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.1);
+    }
+  }
+
+  /* Mobile-specific improvements */
+  @media (max-width: 768px) {
+    .mobile-text-scale {
+      font-size: clamp(1.5rem, 6vw, 2.5rem);
+    }
+
+    .mobile-padding {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+
+    .mobile-spacing {
+      gap: 0.75rem;
+    }
+
+    .mobile-title {
+      font-size: clamp(1.25rem, 5vw, 2rem);
+    }
+
+    .mobile-subtitle {
+      font-size: clamp(0.875rem, 3.5vw, 1.125rem);
+    }
+
+    .mobile-body {
+      font-size: clamp(0.75rem, 3vw, 0.875rem);
+    }
+
+    .mobile-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .mobile-card {
+      padding: 1rem;
+      margin: 0.5rem;
+    }
+
+    .mobile-hero-height {
+      min-height: 60vh;
+    }
+
+    .mobile-section-spacing {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mobile-text-scale {
+      font-size: clamp(1.25rem, 5vw, 2rem);
+    }
+
+    .mobile-title {
+      font-size: clamp(1rem, 4vw, 1.5rem);
+    }
+
+    .mobile-subtitle {
+      font-size: clamp(0.75rem, 3vw, 1rem);
+    }
+
+    .mobile-body {
+      font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+    }
+
+    .mobile-button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .mobile-card {
+      padding: 0.75rem;
+      margin: 0.25rem;
+    }
+  }
+}
